@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useEffect, useState } from "react";
+import "./App.css";
+import ListTodos from "./components/todos/ListTodos";
+
+export const AuthContext = createContext();
+
+const userData = [
+  {
+    id: 1,
+    name: "John Doe",
+    mob: 1234,
+  },
+  {
+    id: 2,
+    name: "Jane Doe",
+    mob: 5678,
+  },
+  {
+    id: 3,
+    name: "Adam Doe",
+    mob: 9012,
+  },
+];
 
 function App() {
+  const [userDt, setUserDt] = useState([]);
+
+  useEffect(() => {
+    setUserDt(userData);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {userDt.map((ud) => (
+        <h3 key={ud.id}>{ud.name}</h3>
+      ))}
+
+      <ListTodos />
     </div>
   );
 }
