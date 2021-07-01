@@ -3,6 +3,9 @@ const todoReducer = (todos = [], action) => {
     case "GET_TODOS":
       return action.todos.data;
 
+    case "ADD_TODO":
+      return [action.todo.data, ...todos];
+
     default:
       return todos;
   }

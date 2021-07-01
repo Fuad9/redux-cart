@@ -1,41 +1,24 @@
 import React, { createContext, useEffect, useState } from "react";
 import "./App.css";
 import ListTodos from "./components/todos/ListTodos";
-
-export const AuthContext = createContext();
-
-const userData = [
-  {
-    id: 1,
-    name: "John Doe",
-    mob: 1234,
-  },
-  {
-    id: 2,
-    name: "Jane Doe",
-    mob: 5678,
-  },
-  {
-    id: 3,
-    name: "Adam Doe",
-    mob: 9012,
-  },
-];
+import AddTodos from "./components/todos/AddTodos";
+import Login from "./components/auth/Login";
 
 function App() {
-  const [userDt, setUserDt] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(false);
 
-  useEffect(() => {
-    setUserDt(userData);
-  }, []);
+  const [todo, setTodo] = useState({
+    name: "",
+    email: "",
+  });
 
   return (
     <div className="App">
-      {userDt.map((ud) => (
-        <h3 key={ud.id}>{ud.name}</h3>
-      ))}
-
       <ListTodos />
+
+      <AddTodos todo={todo} setTodo={setTodo} />
+
+      <Login loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
     </div>
   );
 }

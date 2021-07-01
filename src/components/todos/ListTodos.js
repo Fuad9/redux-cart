@@ -4,7 +4,6 @@ import { getTodos } from "../../store/actions/todoActions";
 
 export default function ListTodos() {
   const todos = useSelector((state) => state.todos);
-  console.log(todos);
   const dispatch = useDispatch();
 
   useEffect(() => {

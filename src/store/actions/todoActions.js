@@ -15,3 +15,19 @@ export const getTodos = () => {
       });
   };
 };
+
+export const addTodo = (newTodo) => {
+  return (dispatch) => {
+    axios
+      .post(`https://jsonplaceholder.typicode.com/users`, { ...newTodo })
+      .then((todo) => {
+        dispatch({
+          type: "ADD_TODO",
+          todo,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
