@@ -1,12 +1,10 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ListTodos from "./components/todos/ListTodos";
 import AddTodos from "./components/todos/AddTodos";
-import Login from "./components/auth/Login";
+import NavBar from "./components/navbar/NavBar";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(false);
-
   const [todo, setTodo] = useState({
     name: "",
     email: "",
@@ -14,11 +12,11 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
+
       <ListTodos />
 
       <AddTodos todo={todo} setTodo={setTodo} />
-
-      <Login loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
     </div>
   );
 }

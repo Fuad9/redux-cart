@@ -12,9 +12,11 @@ export default function ListTodos() {
 
   return (
     <>
-      {todos.map((todo) => (
-        <h3 key={todo.id}>{todo.name}</h3>
-      ))}
+      <div style={{ textAlign: "center" }}>
+        {todos.map((todo) => (
+          <h6 key={todo.id}>{todo.name}</h6>
+        ))}
+      </div>
     </>
   );
 }

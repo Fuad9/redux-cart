@@ -1,4 +1,4 @@
-import firebaseConfig from "./firebaseClient";
+import firebaseConfig from "../../components/auth/firebaseClient";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -14,14 +14,14 @@ export const googleSignIn = () => {
       .then((result) => {
         const credential = result.credential;
 
-        const token = credential.accessToken;
-        sessionStorage.setItem("token", token);
+        const authToken = credential.accessToken;
+        sessionStorage.setItem("authToken", authToken);
 
-        const user = result.user;
+        const users = result.user;
         /* user info will be sent(dispatch) to store ======================== */
         dispatch({
           type: "GET_AUTH_USER",
-          user,
+          users,
         });
       })
       .catch((error) => {
